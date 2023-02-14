@@ -80,7 +80,7 @@ const completeOrder = async (req: express.Request, res: express.Response) => {
 };
 
 const orderRoutes = (app: express.Application) => {
-  app.get('/orders', getOrders);
+  app.get('/orders', auth, getOrders);
   app.get('/orders/:id', auth, show);
   app.post('/orders', auth, createOrder);
   app.delete('/orders/:id', auth, cancelOrder);

@@ -68,7 +68,7 @@ const userRoutes = (app: express.Application) => {
   app.get('/users', verifyAuthToken, getUsers);
   app.get('/users/:username', verifyAuthToken, showUser);
   app.post('/users', createUser);
-  app.post('/users/login', verifyAuthToken, login);
+  app.post('/users/login', login);
 };
 
 export default userRoutes;

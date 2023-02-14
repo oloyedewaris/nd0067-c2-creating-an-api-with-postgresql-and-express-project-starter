@@ -7,7 +7,6 @@ dotenv.config();
 
 const {
   POSTGRES_HOST,
-  POSTGRES_DB,
   POSTGRES_USER,
   POSTGRES_PASSWORD,
   POSTGRES_TEST_DB,
@@ -15,9 +14,7 @@ const {
   ENV,
 } = process.env;
 
-// let client;
-console.log(ENV);
-let databaseType = POSTGRES_DEV_DB;
+var databaseType = POSTGRES_DEV_DB;
 if (ENV === 'test') {
   databaseType = POSTGRES_TEST_DB;
 }

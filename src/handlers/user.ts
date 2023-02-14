@@ -1,7 +1,7 @@
 import express from 'express';
 import { User, UserStore } from '../models/user';
 import jwt from 'jsonwebtoken';
-import verifyAuthToken from '../middlewares/auth';
+import auth from '../middlewares/auth';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -65,8 +65,8 @@ const login = async (req: express.Request, res: express.Response) => {
 };
 
 const userRoutes = (app: express.Application) => {
-  app.get('/users', verifyAuthToken, getUsers);
-  app.get('/users/:username', verifyAuthToken, showUser);
+  app.get('/users', auth, getUsers);
+  app.get('/users/:username', auth, showUser);
   app.post('/users', createUser);
   app.post('/users/login', login);
 };

@@ -4,6 +4,8 @@ import bodyParser from 'body-parser';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoidGVzdF91c2VyIiwicGFzc3dvcmQiOiIkMmIkMTAkWEticHMzZ1ljbFhsOThLVFdranZ2T3JkLkw1blVXSThxZjFpVXBZZS9FNlh5dEtxQjIyUXEifSwiaWF0IjoxNjc2MzQ0Njk0fQ.OMNJwgZfLHzD8w4hXmTJLOgnIttfcJ3aSQkNtxqAUXI"
+
 describe('Test products endpoint with supertest', function () {
   it('should respond with success status to get products', async () => {
     const result = await supertest(app).get('/products');
@@ -32,7 +34,7 @@ describe('Test user endpoint with supertest', function () {
 
 describe('Test orders endpoint with supertest', function () {
   it('should show a status of 200 after requesting for orders', async () => {
-    const result = await supertest(app).get('/orders')
+    const result = await supertest(app).get('/orders').set({ authorization: `Bearer ${token}` })
     expect(result.statusCode).toBe(200);
   });
   // it('rqe', async () => {
